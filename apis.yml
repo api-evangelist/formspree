@@ -1,0 +1,29 @@
+aid: formspree
+url: https://raw.githubusercontent.com/api-evangelist/formspree/refs/heads/main/apis.yml
+name: Formspree
+x-type: company
+description: >-
+  Formspree is a form backend service for static and Jamstack sites — collects submissions, validates, sends emails, and integrates via webhooks and Plugins.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Forms
+  - Backend
+  - Static Sites
+  - Email
+  - Webhooks
+created: '2026-05-08'
+modified: '2026-05-08'
+specificationVersion: '0.19'
+apis: []
+common:
+  - type: Website
+    url: https://formspree.io/
+  - type: Plans
+    url: plans/formspree-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/formspree-rate-limits.yml
+  - type: FinOps
+    url: finops/formspree-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
