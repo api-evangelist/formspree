@@ -5,7 +5,7 @@ provider: Formspree
 providerId: formspree
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Forms
 - Backend
@@ -15,21 +15,39 @@ tags:
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for Formspree. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: >-
+  Formspree's primary throttle is the per-plan monthly submission ceiling
+  (50 on Free; raised on Personal/Professional/Business). Formspree sends
+  email warnings at 50%, 75% and 90% of the cap, and submissions above the
+  cap are rejected. The Forms API itself uses Bearer auth with public read-
+  only and Master keys; per-second numeric quotas are not publicly enumerated.
+notes: >-
+  Formspree's spam controls (reCAPTCHA, Akismet) and Plugins also bound
+  effective submission throughput; Free archives only retain 30 days of data.
 sources:
-- https://formspree.io/
+- https://help.formspree.io/hc/en-us/articles/47605896654227-Account-limits
+- https://help.formspree.io/sections/the-forms-api/
 responseCodes:
   throttled: 429
 limits:
-- name: Default
+- name: Free plan submissions/month
   scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+  metric: submissions/month
+  limit: 50
+- name: Free plan archive retention
+  scope: account
+  metric: days
+  limit: 30
+- name: Forms API requests
+  scope: api_token
+  metric: requests
+  limit: see Formspree docs
+  notes: Per-token throttle; 429 on excess.
 policies:
+- name: Threshold notifications
+  description: Warnings emailed at 50%, 75%, 90% of monthly submission cap.
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: Honor 429 responses with exponential backoff.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

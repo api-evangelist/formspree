@@ -13,29 +13,95 @@ tags:
 - Email
 - Webhooks
 - Plans
-description: Placeholder plans/pricing artifact for Formspree. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled.
+- Pricing
+description: >-
+  Formspree sells a Free tier plus three paid tiers — Personal, Professional
+  and Business — tiered by monthly submission cap and feature set. The free
+  plan offers 50 submissions/month with 30-day archive. Paid plans expose
+  programmatic Forms API keys.
+notes: >-
+  Public list prices vary across third-party comparison sources. The most
+  commonly cited values as of 2026-05-08 are reflected here, but prices on
+  formspree.io/plans should be checked at contract time. Reconciled flagged
+  false until verified directly on the live pricing page.
 sources:
-- https://formspree.io/
+- https://formspree.io/plans
+- https://help.formspree.io/hc/en-us/articles/47605896654227-Account-limits
 plans:
-- id: formspree-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+- id: formspree-free
+  name: Free
+  type: free
+  description: 50 submissions/month, unlimited forms, 30-day submission archive.
   entries:
-  - label: API Access
-    name: api_access
+  - label: Plan price
+    name: monthly_price
     type: flat
-    metric: varies
+    metric: month
     limit: -1
-    timeFrame: usage
+    timeFrame: month
     geo: global
     unit: 1
-    price: see https://formspree.io/
+    price: 0
+    currency: USD
     userMultiplied: false
-  elements:
-  - name: Pending Reconciliation
+  - label: Included submissions
+    name: submissions
+    type: tier
+    metric: submissions/month
+    limit: 50
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+- id: formspree-personal
+  name: Personal
+  type: subscription
+  description: Personal plan with raised submission caps and full archive retention.
+  entries:
+  - label: Plan price (see live pricing)
+    name: monthly_price
+    type: flat
+    metric: month
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: see https://formspree.io/plans
+    currency: USD
+    userMultiplied: false
+- id: formspree-professional
+  name: Professional
+  type: subscription
+  description: Professional plan; team features, higher submissions, integrations.
+  entries:
+  - label: Plan price (see live pricing)
+    name: monthly_price
+    type: flat
+    metric: month
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: see https://formspree.io/plans
+    currency: USD
+    userMultiplied: false
+- id: formspree-business
+  name: Business
+  type: subscription
+  description: Business plan; high-volume submissions, advanced spam protection, plugins.
+  entries:
+  - label: Plan price (see live pricing)
+    name: monthly_price
+    type: flat
+    metric: month
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: see https://formspree.io/plans
+    currency: USD
+    userMultiplied: false
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -3,7 +3,12 @@ url: https://raw.githubusercontent.com/api-evangelist/formspree/refs/heads/main/
 name: Formspree
 x-type: company
 description: >-
-  Formspree is a form backend service for static and Jamstack sites — collects submissions, validates, sends emails, and integrates via webhooks and Plugins.
+  Formspree is a form backend for static and Jamstack sites. Two API surfaces
+  matter: (1) the public form-submission endpoint (formspree.io/f/{hashid})
+  that accepts POST submissions and returns JSON when the Accept header is
+  set, and (2) the Forms API (formspree.io/api/0/...) for programmatic
+  submission retrieval, export and form management. Plugins and the Formspree
+  CLI extend the surface.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Forms
@@ -11,13 +16,58 @@ tags:
   - Static Sites
   - Email
   - Webhooks
+  - JAMstack
+  - CLI
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: formspree:submission
+    name: Formspree Form Submission Endpoint
+    description: >-
+      Public POST endpoint per form. Accepts standard HTML form posts and
+      cross-origin AJAX (Accept: application/json) and returns JSON. No auth
+      for the submission itself; per-form spam controls.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://help.formspree.io/hc/en-us/articles/360015233153-Form-Submissions-API
+    baseURL: https://formspree.io/f/<hashid>
+    tags:
+      - REST
+      - Submissions
+      - AJAX
+    properties:
+      - type: Documentation
+        url: https://help.formspree.io/hc/en-us/articles/360015233153-Form-Submissions-API
+  - aid: formspree:forms-api
+    name: Formspree Forms API
+    description: >-
+      REST API for retrieving submissions and managing forms. Endpoints under
+      /api/0/forms/<hashid>/. Bearer auth using a public read-only API key
+      or a Master API key (paid plans only). Supports since/limit/offset.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://help.formspree.io/sections/the-forms-api/
+    baseURL: https://formspree.io/api/0
+    tags:
+      - REST
+      - Submissions
+      - Management
+      - Pagination
+    properties:
+      - type: Documentation
+        url: https://help.formspree.io/sections/the-forms-api/
+      - type: APIKeys
+        url: https://help.formspree.io/articles/the-forms-api/api-keys/
 common:
   - type: Website
     url: https://formspree.io/
+  - type: Documentation
+    url: https://help.formspree.io/
+  - type: Pricing
+    url: https://formspree.io/plans
+  - type: GitHub
+    url: https://github.com/formspree
+  - type: StatusPage
+    url: https://www.formspreestatus.com/
   - type: Plans
     url: plans/formspree-plans-pricing.yml
   - type: RateLimits
