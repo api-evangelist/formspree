@@ -1,7 +1,7 @@
 aid: formspree
 url: https://raw.githubusercontent.com/api-evangelist/formspree/refs/heads/main/apis.yml
 name: Formspree
-x-type: company
+kind: company
 description: >-
   Formspree is a form backend for static and Jamstack sites. Two API surfaces
   matter: (1) the public form-submission endpoint (formspree.io/f/{hashid})
