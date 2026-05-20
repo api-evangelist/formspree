@@ -58,6 +58,8 @@ apis:
       - type: APIKeys
         url: https://help.formspree.io/articles/the-forms-api/api-keys/
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/formspree
   - type: Website
     url: https://formspree.io/
   - type: Documentation
