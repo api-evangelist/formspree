@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Formspree Form Submissions API",
+    "version": "0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "List form submissions",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://formspree.io/api/0/forms/:hashid/submissions",
+        "params": [
+          {
+            "name": "hashid",
+            "value": "",
+            "type": "path",
+            "description": "The form's hashid (e.g. as found in the form's action URL)."
+          },
+          {
+            "name": "since",
+            "value": "",
+            "type": "query",
+            "description": "Return submissions created after this ISO 8601 timestamp."
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Maximum number of submissions to return."
+          },
+          {
+            "name": "offset",
+            "value": "",
+            "type": "query",
+            "description": "Number of submissions to skip for pagination."
+          },
+          {
+            "name": "order",
+            "value": "",
+            "type": "query",
+            "description": "Sort order. Defaults to descending."
+          },
+          {
+            "name": "spam",
+            "value": "",
+            "type": "query",
+            "description": "Whether to include spam-flagged submissions. Defaults to false."
+          }
+        ]
+      },
+      "docs": "Fetch submissions for a given form, identified by its hashid."
+    }
+  ],
+  "bundled": true
+}
