@@ -9,7 +9,7 @@ description: >-
   set, and (2) the Forms API (formspree.io/api/0/...) for programmatic
   submission retrieval, export and form management. Plugins and the Formspree
   CLI extend the surface.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Forms
   - Backend
@@ -28,7 +28,7 @@ apis:
       Public POST endpoint per form. Accepts standard HTML form posts and
       cross-origin AJAX (Accept: application/json) and returns JSON. No auth
       for the submission itself; per-form spam controls.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://help.formspree.io/hc/en-us/articles/360015233153-Form-Submissions-API
     baseURL: https://formspree.io/f/<hashid>
     tags:
@@ -44,7 +44,7 @@ apis:
       REST API for retrieving submissions and managing forms. Endpoints under
       /api/0/forms/<hashid>/. Bearer auth using a public read-only API key
       or a Master API key (paid plans only). Supports since/limit/offset.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://help.formspree.io/sections/the-forms-api/
     baseURL: https://formspree.io/api/0
     tags:
