@@ -76,7 +76,7 @@ common:
     url: rate-limits/formspree-rate-limits.yml
   - type: FinOps
     url: finops/formspree-finops.yml
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://formspree.io/llms.txt
 maintainers:
   - FN: Kin Lane
