@@ -58,6 +58,14 @@ apis:
       - type: APIKeys
         url: https://help.formspree.io/articles/the-forms-api/api-keys/
 common:
+  - type: TrustCenter
+    url: security/formspree-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/formspree-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/formspree-domain-security.yml
+  - type: Authentication
+    url: authentication/formspree-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/formspree
   - type: Website
