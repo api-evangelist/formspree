@@ -58,6 +58,8 @@ apis:
       - type: APIKeys
         url: https://help.formspree.io/articles/the-forms-api/api-keys/
 common:
+  - type: AgenticAccess
+    url: agentic-access/formspree-agentic-access.yml
   - type: TrustCenter
     url: security/formspree-trust-center.yml
   - type: VulnerabilityDisclosure
