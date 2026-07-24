@@ -1,0 +1,114 @@
+openapi: 3.1.0
+info:
+  title: Formspree Form Submissions Forms API
+  description: 'The Formspree Form Submissions API lets you programmatically retrieve submissions
+
+    for forms you own. Requires a Professional or Business plan and an API key
+
+    associated with the form.
+
+    '
+  version: '0'
+  contact:
+    name: Formspree Support
+    url: https://help.formspree.io/
+  license:
+    name: Proprietary
+servers:
+- url: https://formspree.io/api/0
+  description: Production
+security:
+- apiKeyBasic: []
+tags:
+- name: Forms
+paths:
+  /forms/{hashid}/submissions:
+    get:
+      summary: List form submissions
+      description: Fetch submissions for a given form, identified by its hashid.
+      operationId: listFormSubmissions
+      parameters:
+      - name: hashid
+        in: path
+        required: true
+        description: The form's hashid (e.g. as found in the form's action URL).
+        schema:
+          type: string
+      - name: since
+        in: query
+        description: Return submissions created after this ISO 8601 timestamp.
+        schema:
+          type: string
+          format: date-time
+      - name: limit
+        in: query
+        description: Maximum number of submissions to return.
+        schema:
+          type: integer
+          minimum: 1
+      - name: offset
+        in: query
+        description: Number of submissions to skip for pagination.
+        schema:
+          type: integer
+          minimum: 0
+      - name: order
+        in: query
+        description: Sort order. Defaults to descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: spam
+        in: query
+        description: Whether to include spam-flagged submissions. Defaults to false.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: List of submissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubmissionsResponse'
+        '401':
+          description: Missing or invalid credentials.
+        '403':
+          description: API access not enabled for this plan or form.
+        '404':
+          description: Form not found.
+      tags:
+      - Forms
+components:
+  schemas:
+    SubmissionsResponse:
+      type: object
+      properties:
+        fields:
+          type: array
+          description: List of field names present across the returned submissions.
+          items:
+            type: string
+        submissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Submission'
+    Submission:
+      type: object
+      description: An individual form submission. Field keys vary per form.
+      additionalProperties: true
+      properties:
+        _status:
+          type: object
+          description: Delivery and processing state for this submission.
+          additionalProperties: true
+  securitySchemes:
+    apiKeyBasic:
+      type: http
+      scheme: basic
+      description: 'Basic auth with empty username and the form API key as password
+
+        (e.g. `curl -u :API_KEY https://formspree.io/api/0/forms/{hashid}/submissions`).
+
+        '
