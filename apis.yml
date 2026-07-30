@@ -9,7 +9,20 @@ description: >-
   set, and (2) the Forms API (formspree.io/api/0/...) for programmatic
   submission retrieval, export and form management. Plugins and the Formspree
   CLI extend the surface.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/formspree.png
 tags:
   - Forms
   - Backend
@@ -22,41 +35,49 @@ created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
 apis:
-  - aid: formspree:submission
-    name: Formspree Form Submission Endpoint
-    description: >-
-      Public POST endpoint per form. Accepts standard HTML form posts and
-      cross-origin AJAX (Accept: application/json) and returns JSON. No auth
-      for the submission itself; per-form spam controls.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://help.formspree.io/hc/en-us/articles/360015233153-Form-Submissions-API
-    baseURL: https://formspree.io/f/<hashid>
-    tags:
-      - REST
-      - Submissions
-      - AJAX
-    properties:
-      - type: Documentation
-        url: https://help.formspree.io/hc/en-us/articles/360015233153-Form-Submissions-API
-  - aid: formspree:forms-api
-    name: Formspree Forms API
-    description: >-
-      REST API for retrieving submissions and managing forms. Endpoints under
-      /api/0/forms/<hashid>/. Bearer auth using a public read-only API key
-      or a Master API key (paid plans only). Supports since/limit/offset.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://help.formspree.io/sections/the-forms-api/
-    baseURL: https://formspree.io/api/0
-    tags:
-      - REST
-      - Submissions
-      - Management
-      - Pagination
-    properties:
-      - type: Documentation
-        url: https://help.formspree.io/sections/the-forms-api/
-      - type: APIKeys
-        url: https://help.formspree.io/articles/the-forms-api/api-keys/
+- aid: formspree:submission
+  name: Formspree Form Submission Endpoint
+  description: >-
+    Public POST endpoint per form. Accepts standard HTML form posts and cross-origin AJAX (Accept: application/json)
+    and returns JSON. No auth for the submission itself; per-form spam controls.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://help.formspree.io/hc/en-us/articles/360015233153-Form-Submissions-API
+  baseURL: https://formspree.io/f/<hashid>
+  tags:
+  - REST
+  - Submissions
+  - AJAX
+  properties:
+  - type: Documentation
+    url: https://help.formspree.io/hc/en-us/articles/360015233153-Form-Submissions-API
+- aid: formspree:forms-api
+  name: Formspree Forms API
+  description: >-
+    REST API for retrieving submissions and managing forms. Endpoints under /api/0/forms/<hashid>/. Bearer
+    auth using a public read-only API key or a Master API key (paid plans only). Supports since/limit/offset.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://help.formspree.io/sections/the-forms-api/
+  baseURL: https://formspree.io/api/0
+  tags:
+  - REST
+  - Submissions
+  - Management
+  - Pagination
+  properties:
+  - type: Documentation
+    url: https://help.formspree.io/sections/the-forms-api/
+  - type: APIKeys
+    url: https://help.formspree.io/articles/the-forms-api/api-keys/
+- aid: formspree:formspree-forms-api
+  name: Formspree Forms API
+  description: The Forms API from Formspree — 1 operation(s) for forms.
+  humanURL: https://help.formspree.io/hc/en-us/articles/360015233153-Form-Submissions-API
+  baseURL: https://formspree.io/f/<hashid>
+  tags:
+  - Forms
+  properties:
+  - type: OpenAPI
+    url: openapi/formspree-forms-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/formspree-agentic-access.yml
