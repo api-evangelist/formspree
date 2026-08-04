@@ -1,0 +1,14 @@
+{
+  "provider": "formspree",
+  "sources": [
+    "formspree-forms-api-openapi.yml"
+  ],
+  "outputs": [
+    "formspree-forms-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
