@@ -1,0 +1,244 @@
+# Formspree
+
+> Formspree is a form backend, API, and email service for HTML & JavaScript forms. It's the simplest way to handle form submissions without writing a custom backend.
+
+## Create a Form with a Claim URL
+
+The fastest way to create a fully configured form — ideal for AI agents — is to build a "claim" URL. Send the user to the URL and Formspree creates the form (after they sign in or sign up) with the fields, validation, and integrations you specified.
+
+Once the user clicks the link and confirms the form is created, ask them to paste the form's endpoint URL (e.g. `https://formspree.io/f/YOUR_FORM_ID`) back into the chat. Use that endpoint to finish wiring the form into their site — set it as the `action` of their `<form>` (or pass it to the Formspree React/JS library).
+
+Configuration is expressed as dot-separated query parameters, so any agent or human can read and construct the URL directly. Standard URL percent-encoding applies to values (spaces become `+`, etc.).
+
+**Essential parameters:**
+
+- `name` — the form's display name (e.g. `name=Contact+Us`)
+- `project` — project to add the form to; looks up an existing one or creates it (e.g. `project=website`)
+- `field.<name>=<type>[,<rule>...]` — one parameter per field. Type is one of `email`, `text`, `numeric`, `url`, `datetime-local`, `file`. Common rules: `required`, `maxlength:<n>`, `minlength:<n>`, `min:<n>`, `max:<n>`, `prettyName:<label>`.
+- `action.email=<address>` — where submissions are emailed (comma-separate multiple recipients)
+- `action.<integration>` — connect an integration such as `action.slack`, `action.googlesheets`, `action.airtable`, etc. (a bare parameter, no value); the user completes any OAuth setup after claiming.
+
+**Only mark a field `required` when the form genuinely cannot be processed without it.** Lower friction means higher completion rates, so leave fields optional wherever they reasonably can be — message and comment fields are usually a good candidate. Fields like names and phone numbers can legitimately be required when that information is needed to follow up correctly, so use judgment based on how the submission will be used.
+
+**Example — a basic contact form:**
+
+```
+https://formspree.io/claim?name=Contact+Us&project=website&field.name=text,maxlength:100&field.email=email,required&field.message=text,maxlength:2000&action.email=support@example.com
+```
+
+**Going further:** Each field packs its type and rules into a single comma-separated value (`field.email=email,required`), rules with values use `key:value` (`maxlength:2000`), and the `action.` prefix supports per-key config for richer integrations (e.g. `action.autoresponse.subject=...&action.autoresponse.message=...`). Webhooks, autoresponders, and many CRM/newsletter/support integrations are available. For the full list of supported integrations and their configuration options, see the [Integrations](#integrations-with-claim-flow-syntax) section below.
+
+## Benefits of Formspree
+
+- Use your own frontend code and collect submissions through Formspree's endpoint
+- Fully customizable forms. Formspree supports JavaScript forms, simple HTML forms, and [FormButton](https://formspree.io/formbutton) - easy popup forms.
+- Use the Formspree CLI (@formspree/cli) and React library (@formspree/react) to quickly configure and submit powerful JavaScript forms
+- Squash spam with Formspree's industry leading spam filter, Formshield, reCaptcha, and custom rules
+- Automatically integrate with 25+ different platforms to get your data where it needs to be without Zapier.
+- Trusted by 500,000+ freelancers, agencies, and Fortune 500 companies including the PGA, OpenAI, Amazon, the CDC, UPS, Walmart, Teladoc, T-Mobile, ILIA, Adobe, IBM, and ReadMe.
+
+## Integrations with Claim-Flow Syntax
+
+Formspree integrates with the products below. Each one can be attached to a form through the claim URL using the `action.` parameter shown. Most integrations authorize via OAuth: add the bare parameter (e.g. `action.slack`) and the user completes the connection after claiming the form. A few can be fully configured directly in the URL — those show their value or sub-parameters.
+
+### Notifications — real-time alerts the moment a form is submitted. Available on all plans, no upgrade required.
+
+- **Email** — `action.email=<address>` (comma-separate multiple recipients, e.g. `action.email=a@x.com,b@x.com`)
+- **Discord** — `action.discord` 
+- **Slack** — `action.slack` 
+- **Telegram** — `action.telegram` 
+
+### Productivity — create tasks, sync rows, or file issues where your team works. Requires a paid plan.
+
+- **Airtable** — `action.airtable` 
+- **Asana** — `action.asana` 
+- **GitHub** — `action.github` 
+- **Google Sheets** — `action.googlesheets` 
+- **Notion** — `action.notion` 
+- **Trello** — `action.trello` 
+
+### CRM Systems — turn every qualified submission into a contact, company, or deal. Requires a paid plan.
+
+- **HubSpot** — `action.hubspot` 
+- **Pipedrive** — `action.pipedrive` 
+- **Salesforce** — `action.salesforce` 
+
+### Newsletters — capture subscribers and keep lists clean and compliant. Requires a paid plan.
+
+- **Mailchimp** — `action.mailchimp` 
+- **MailerLite** — `action.mailerlite` 
+- **ConvertKit** — `action.convertkit` 
+- **Klaviyo** — `action.klaviyo` 
+- **Constant Contact** — `action.constantcontact` 
+- **ActiveCampaign** — `action.activecampaign` 
+
+### Support — pipe issues straight into your support inbox or helpdesk. Requires a paid plan.
+
+- **Freshdesk** — `action.freshdesk` 
+- **Gladly** — `action.gladly` 
+- **Gorgias** — `action.gorgias` 
+- **Zendesk** — `action.zendesk` 
+
+### Payments, automation, and custom — trigger payments, auto-reply, or forward data anywhere. Requires a paid plan.
+
+- **Stripe** — `action.stripe` 
+- **Zapier** — `action.zapier` 
+- **Auto Response** — automatically reply to the submitter. Configure inline with `action.autoresponse.subject=<subject>`, `action.autoresponse.message=<body>`, and optionally `action.autoresponse.fromName=<name>`. 
+- **Webhook** — `action.webhook=<url>` POSTs each submission to your endpoint. 
+
+For full configuration options for any integration, see the documentation at [https://help.formspree.io/sections/plugins](https://help.formspree.io/sections/plugins).
+
+## How to Get Started
+
+1. **Create a Formspree account**: Go to [https://formspree.io](https://formspree.io) and sign up with your email.
+2. **Create a new form**: From your Formspree dashboard, click **+ Add New -> New Form**, and copy the generated form endpoint URL.
+3. **Add the form to your site**: Point your form at the Formspree endpoint and submit to it. See the [Examples](#examples) section below for HTML, AJAX, and React snippets — replace `YOUR_FORM_ID` with your form's ID.
+4. **Test your form**: Submit the form once and confirm the submission appears in your dashboard or arrives via email.
+5. **Add spam protection and integrations**: Enable Formshield, reCAPTCHA, or plugins like Slack, Airtable, or Google Sheets directly from your dashboard.
+6. **Go live**: Deploy your site. Formspree will handle the backend, email notifications, and integrations automatically.
+
+## Examples
+
+Replace `YOUR_FORM_ID` with your form's ID (the value after `/f/` in your endpoint URL, e.g. `https://formspree.io/f/YOUR_FORM_ID`).
+
+### HTML
+
+The simplest setup: set the form's `action` to your endpoint and `method="POST"`.
+
+```html
+<!-- modify this form HTML and place wherever you want your form -->
+<form
+  action="https://formspree.io/f/YOUR_FORM_ID"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
+```
+
+### AJAX
+
+Submit without a page reload using the `@formspree/ajax` library.
+
+```html
+<!-- modify this form HTML and place wherever you want your form -->
+<div data-fs-success>Thanks for your submission!</div>
+<div data-fs-error>Oops! There was a problem submitting your form.</div>
+<form id="my-form">
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" data-fs-field />
+  <span data-fs-error="email"></span>
+  <label for="message">Message:</label>
+  <input type="text" id="message" name="message" data-fs-field />
+  <span data-fs-error="message"></span>
+  <button type="submit" data-fs-submit-btn>Submit</button>
+</form>
+
+<!-- Place these scripts at the end of the body tag -->
+<script>
+  window.formspree =
+    window.formspree ||
+    function () {
+      (formspree.q = formspree.q || []).push(arguments);
+    };
+  formspree("initForm", {
+    formElement: "#my-form",
+    formId: "YOUR_FORM_ID",
+  });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+```
+
+### React
+
+Use the `@formspree/react` library and its `useForm` hook.
+
+```jsx
+// Make sure to run npm install @formspree/react
+// For more help visit https://formspr.ee/react-help
+import React from 'react';
+import { useForm, ValidationError } from '@formspree/react';
+
+function ContactForm() {
+  const [state, handleSubmit] = useForm("YOUR_FORM_ID");
+  if (state.succeeded) {
+      return <p>Thanks for joining!</p>;
+  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="email">
+        Email Address
+      </label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+      />
+      <ValidationError
+        prefix="Email"
+        field="email"
+        errors={state.errors}
+      />
+      <textarea
+        id="message"
+        name="message"
+      />
+      <ValidationError
+        prefix="Message"
+        field="message"
+        errors={state.errors}
+      />
+      <button type="submit" disabled={state.submitting}>
+        Submit
+      </button>
+      <ValidationError errors={state.errors} />
+    </form>
+  );
+}
+
+function App() {
+  return (
+    <ContactForm />
+  );
+}
+
+export default App;
+```
+
+## Platform Integration Guides
+
+Formspree provides [platform-specific implementation guides](https://formspree.io/guides/) for integrating forms into common site builders and frameworks.
+
+Supported platform guides:
+- [Framer](https://formspree.io/guides/framer/): How to add Formspree forms to Framer
+- [Squarespace](https://formspree.io/guides/squarespace/): How to add Formspree forms to Squarespace
+- [WordPress](https://formspree.io/guides/wordpress/): How to add Formspree forms to Wordpress
+- [Webflow](https://formspree.io/guides/webflow/): How to add Formspree forms to Webflow
+- [Shopify](https://formspree.io/guides/shopify/): How to add Formspree forms to Shopify
+- [Angular](https://formspree.io/guides/angular/): How to add Formspree forms to an Angular app
+- [Next.js](https://formspree.io/guides/nextjs/): How to add Formspree forms to a Nextjs app
+
+These guides document how to connect existing platform form components to a Formspree endpoint, configure submission handling, and enable production-ready form workflows without maintaining a custom backend.
+
+## Documentation
+- ["Thank You" redirect](https://formspree.io/markdown-support/-Thank-You-redirect.md)
+- [Building a Form with JavaScript](https://formspree.io/markdown-support/Building-a-Form-with-JavaScript.md)
+- [Building an HTML Form](https://formspree.io/markdown-support/Building-an-HTML-Form.md)
+- [File uploads](https://formspree.io/markdown-support/File-uploads.md)
+- [Getting started with Workflow](https://formspree.io/markdown-support/Getting-started-with-Workflow.md)
+- [Localization and translation](https://formspree.io/markdown-support/Localization-and-translation.md)
+- [Plugins](https://formspree.io/markdown-support/Plugins.md)
+- [reCAPTCHA settings](https://formspree.io/markdown-support/reCAPTCHA-settings.md)
+- [Sending a confirmation or response email](https://formspree.io/markdown-support/Sending-a-confirmation-or-response-email.md)
+- [Setting Custom Email Templates](https://formspree.io/markdown-support/Setting-Custom-Email-Templates.md)
+- [Setting up a Formspree Team](https://formspree.io/markdown-support/Setting-up-a-Formspree-Team.md)
+- [Special Fields](https://formspree.io/markdown-support/Special-Fields.md)
+- [The Formspree React library](https://formspree.io/markdown-support/The-Formspree-React-library.md)

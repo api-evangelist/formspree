@@ -1,0 +1,405 @@
+{
+  "item": [
+    {
+      "id": "0313d6ea-3122-4d01-8176-ad0ff491d7b3",
+      "name": "Forms",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "52c8e03b-0294-4277-a0a8-64c7d01e55e3",
+          "name": "List form submissions",
+          "request": {
+            "name": "List form submissions",
+            "description": {
+              "content": "Fetch submissions for a given form, identified by its hashid.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forms",
+                ":hashid",
+                "submissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<dateTime>",
+                  "description": "Return submissions created after this ISO 8601 timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of submissions to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Number of submissions to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "Sort order. Defaults to descending."
+                },
+                {
+                  "disabled": false,
+                  "key": "spam",
+                  "value": "<boolean>",
+                  "description": "Whether to include spam-flagged submissions. Defaults to false."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "hashid",
+                  "description": "(Required) The form's hashid (e.g. as found in the form's action URL)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe9d9fda-89a9-45d9-b7b1-abf4ec601b80",
+              "name": "List of submissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    ":hashid",
+                    "submissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "spam",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hashid",
+                      "description": "(Required) The form's hashid (e.g. as found in the form's action URL)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fields\": [\n    \"string\",\n    \"string\"\n  ],\n  \"submissions\": [\n    {\n      \"_status\": {\n        \"key_0\": 2437,\n        \"key_1\": false\n      }\n    },\n    {\n      \"_status\": {\n        \"key_0\": 1999.8058001761242,\n        \"key_1\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a6bae88-9ab7-44a2-9e7b-0ca026429792",
+              "name": "Missing or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    ":hashid",
+                    "submissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "spam",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hashid",
+                      "description": "(Required) The form's hashid (e.g. as found in the form's action URL)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6690c437-ba62-4bcc-9ece-0a464d8d8a8f",
+              "name": "API access not enabled for this plan or form.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    ":hashid",
+                    "submissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "spam",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hashid",
+                      "description": "(Required) The form's hashid (e.g. as found in the form's action URL)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc34ad82-1f23-4a12-b8ff-45c4eb2db0ba",
+              "name": "Form not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forms",
+                    ":hashid",
+                    "submissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "spam",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hashid",
+                      "description": "(Required) The form's hashid (e.g. as found in the form's action URL)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://formspree.io/api/0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d1186cdf-31a4-4f61-a475-1937c9abbecd",
+    "name": "Formspree Form Submissions Forms API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Formspree Form Submissions API lets you programmatically retrieve submissions\nfor forms you own. Requires a Professional or Business plan and an API key\nassociated with the form.\n\n\nContact Support:\n Name: Formspree Support",
+      "type": "text/plain"
+    }
+  }
+}
