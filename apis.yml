@@ -9,6 +9,18 @@ description: >-
   set, and (2) the Forms API (formspree.io/api/0/...) for programmatic
   submission retrieval, export and form management. Plugins and the Formspree
   CLI extend the surface.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
