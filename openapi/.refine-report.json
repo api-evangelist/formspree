@@ -1,7 +1,7 @@
 {
   "provider": "formspree",
   "sources": [
-    "formspree-forms-api-openapi.yml"
+    "_original/formspree-openapi.yml"
   ],
   "outputs": [
     "formspree-forms-api-openapi.yml"
@@ -9,6 +9,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "formspree-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "formspree-openapi.yml: tagged paths GET /forms/{hashid}/submissions -> Forms",
+    "formspree-openapi.yml: declared missing tag: Forms",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "formspree-forms-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
