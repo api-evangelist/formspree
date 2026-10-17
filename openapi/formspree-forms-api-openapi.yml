@@ -80,15 +80,6 @@ paths:
       - Forms
 components:
   schemas:
-    Submission:
-      type: object
-      description: An individual form submission. Field keys vary per form.
-      additionalProperties: true
-      properties:
-        _status:
-          type: object
-          description: Delivery and processing state for this submission.
-          additionalProperties: true
     SubmissionsResponse:
       type: object
       properties:
@@ -101,6 +92,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Submission'
+    Submission:
+      type: object
+      description: An individual form submission. Field keys vary per form.
+      additionalProperties: true
+      properties:
+        _status:
+          type: object
+          description: Delivery and processing state for this submission.
+          additionalProperties: true
   securitySchemes:
     apiKeyBasic:
       type: http
