@@ -27,3 +27,29 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: formspree-netlify-own
+  label: Netlify (own)
+  partner: netlify
+  partner_name: Netlify (own)
+  category: Search
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.netlify.com/integrations/formspree/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: formspree-vercel-own
+  label: Vercel (own)
+  partner: vercel
+  partner_name: Vercel (own)
+  category: CMS
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://vercel.com/marketplace/formspree
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
