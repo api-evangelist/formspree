@@ -1,4 +1,4 @@
-# Formspree (formspree)
+# Formspree
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,79 +66,121 @@
 
 Formspree is a form backend for static and Jamstack sites. Two API surfaces matter: (1) the public form-submission endpoint (formspree.io/f/{hashid}) that accepts POST submissions and returns JSON when the Accept header is set, and (2) the Forms API (formspree.io/api/0/...) for programmatic submission retrieval, export and form management. Plugins and the Formspree CLI extend the surface.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/formspree/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/formspree/refs/heads/main/apis.yml)
+**Areas:** Forms · Backend · Static Sites · Email · Webhook · JAMstack · CLI
 
-## Tags
+## Formspree on APIs.io
 
-- Forms
-- Backend
-- Static Sites
-- Email
-- Webhooks
-- JAMstack
-- CLI
+Everything profiled for Formspree is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/formspree/](https://apis.io/providers/formspree/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (3)
 
-- **Created:** 2026-05-08
-- **Modified:** 2026-05-08
+- [Formspree Form Submission Endpoint](https://apis.io/apis/formspree/submission/) — Public POST endpoint per form. Accepts standard HTML form posts and cross-origin AJAX (Accept: application/json) and returns JSON. No auth for the…
+- [Formspree Forms API](https://apis.io/apis/formspree/forms-api/) — REST API for retrieving submissions and managing forms. Endpoints under /api/0/forms/<hashid>/. Bearer auth using a public read-only API key or a Master API…
+- [Formspree Forms API](https://apis.io/apis/formspree/formspree-forms-api/) — The Forms API from Formspree — 1 operation(s) for forms.
 
-## APIs
+### Published properties
 
-### Formspree Form Submission Endpoint
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Public POST endpoint per form. Accepts standard HTML form posts and cross-origin AJAX (Accept: application/json) and returns JSON. No auth for the submission itself; per-form spam controls.
+#### Agentic access (1)
 
-- **Human URL:** [https://help.formspree.io/hc/en-us/articles/360015233153-Form-Submissions-API](https://help.formspree.io/hc/en-us/articles/360015233153-Form-Submissions-API)
-- **Base URL:** `https://formspree.io/f/<hashid>`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Formspree Agentic Access](https://apis.io/agentic-access/formspree/formspree-agentic-access/)
 
-- REST
-- Submissions
-- AJAX
+#### Collections (2)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://help.formspree.io/hc/en-us/articles/360015233153-Form-Submissions-API)
-- [Postman Collection](collections/formspree.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formspree.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Formspree Form Submissions API](https://apis.io/collections/formspree/open-formspree/)
+- [Formspree Form Submissions Forms API](https://apis.io/collections/formspree/open-formspree-forms-api/)
 
-### Formspree Forms API
+#### Security (4)
 
-REST API for retrieving submissions and managing forms. Endpoints under /api/0/forms/<hashid>/. Bearer auth using a public read-only API key or a Master API key (paid plans only). Supports since/limit/offset.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://help.formspree.io/sections/the-forms-api/](https://help.formspree.io/sections/the-forms-api/)
-- **Base URL:** `https://formspree.io/api/0`
+- [Formspree Authentication](https://apis.io/security/formspree/formspree-authentication/)
+- [Formspree Domain Security](https://apis.io/security/formspree/formspree-domain-security/)
+- [Formspree Trust Center](https://apis.io/security/formspree/formspree-trust-center/)
+- [Formspree Vulnerability Disclosure](https://apis.io/security/formspree/formspree-vulnerability-disclosure/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- REST
-- Submissions
-- Management
-- Pagination
+Published plans, tiers and prices.
 
-#### Properties
+- [Formspree Plans Pricing](https://apis.io/plans/formspree/formspree-plans-pricing/)
 
-- [Documentation](https://help.formspree.io/sections/the-forms-api/)
-- [A P I Keys](https://help.formspree.io/articles/the-forms-api/api-keys/)
-- [Postman Collection](collections/formspree.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formspree.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-## Common Properties
+Published request limits.
 
-- [LinkedIn](https://www.linkedin.com/company/formspree)
+- [Formspree Rate Limits](https://apis.io/rate-limits/formspree/formspree-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Formspree Finops](https://apis.io/finops/formspree/formspree-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://formspree.io/)
 - [Documentation](https://help.formspree.io/)
 - [Pricing](https://formspree.io/plans)
-- [Git Hub](https://github.com/formspree)
-- [Status Page](https://www.formspreestatus.com/)
-- [Plans](plans/formspree-plans-pricing.yml)
-- [Rate Limits](rate-limits/formspree-rate-limits.yml)
-- [Fin Ops](finops/formspree-finops.yml)
-- [L L Ms Txt](https://formspree.io/llms.txt)
+- [Blog](https://formspree.io/blog/)
+- [Status](https://www.formspreestatus.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 34.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 51.4 |
+| Contract governance | 0.0 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 26.3 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 22.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/formspree/](https://apis.io/providers/formspree/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Formspree: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/formspree/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
